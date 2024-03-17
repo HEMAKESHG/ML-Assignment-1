@@ -68,27 +68,47 @@ y = df['CO2EMISSIONS']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-model_cylinder = LinearRegression()
-model_cylinder.fit(X_train, y_train)
+model_fuel = LinearRegression()
+model_fuel.fit(X_train, y_train)
+
+plt.scatter(X_test, y_test, color='blue', label='Actual Data')
+plt.plot(X_test, model_fuel.predict(X_test), color='red', label='Regression Line')
+plt.xlabel('Cylinder')
+plt.ylabel('CO2EMISSION')
+plt.title('CYLINDER vs CO2 EMISSION')
+plt.legend()
+plt.show()
 ```
 ### Output:
-![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/1a05f650-9c10-49d3-a33f-15f9367cdbdf)
+![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/0029d816-5145-4b26-aa3c-a3e593f53dd1)
+
 
 
 ## Q5. Train another model with independent variable as FuelConsumption_comb and dependent variable as Co2Emission
 
 ### Program:
 ```
-X = df[['CYLINDERS']]
-y = df['CO2EMISSIONS']
+data = pd.read_csv("/content/FuelConsumption.csv")
+
+X = data['FUELCONSUMPTION_COMB'].values.reshape(-1, 1)
+y = data['CO2EMISSIONS'].values
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-model_cylinder = LinearRegression()
-model_cylinder.fit(X_train, y_train)
+model_fuel = LinearRegression()
+model_fuel.fit(X_train, y_train)
+
+plt.scatter(X_test, y_test, color='blue', label='Actual Data')
+plt.plot(X_test, model_fuel.predict(X_test), color='red', label='Regression Line')
+plt.xlabel('FUELCONSUMPTION_COMB')
+plt.ylabel('CO2EMISSIONS')
+plt.title('Fuel Consumption vs Co2 Emission')
+plt.legend()
+plt.show()
+
 ```
 ### Output:
-![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/97fe9deb-d6c8-4f53-87c4-bfd45d6eb78b)
+![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/454e18f1-d311-4e0b-9ae6-2e01113ef2c1)
 
 
 ## Q6. Train your model on different train test ratio and train the models and note down their accuracies
