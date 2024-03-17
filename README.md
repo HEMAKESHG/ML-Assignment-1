@@ -115,14 +115,76 @@ plt.show()
 
 ### Program:
 ```
-X = df[['CYLINDERS']]
-y = df['CO2EMISSIONS']
+X_2 = df.iloc[:, 10:11].values
+Y_1 = df['CO2EMISSIONS'].values
+X_train_1, X_test_1, Y_train_1, Y_test_1 = train_test_split(X_2, Y_1, test_size=1/3, random_state=0)
+regressor = LinearRegression()
+regressor.fit(X_train_1, Y_train_1)
+Y_train_pred = regressor.predict(X_train_1)
+plt.scatter(X_train_1, Y_train_1, color='blue', label='Actual Data')
+plt.plot(X_train_1, Y_train_pred, color='red', label='Regression Line')
+plt.title("Fuel Consumption Combined vs CO2 Emission (Training set)")
+plt.xlabel("Fuel Consumption Combined")
+plt.ylabel("CO2 Emission")
+plt.legend()
+plt.show()
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-model_cylinder = LinearRegression()
-model_cylinder.fit(X_train, y_train)
+
+
+X_2 = df.iloc[:, 10:11].values
+Y_1 = df['CO2EMISSIONS'].values
+X_train_1, X_test_1, Y_train_1, Y_test_1 = train_test_split(X_2, Y_1, test_size=1/3, random_state=0)
+regressor = LinearRegression()
+regressor.fit(X_train_1, Y_train_1)
+Y_pred = regressor.predict(X_test_1)
+plt.scatter(X_test_1, Y_test_1, color='blue')
+plt.plot(X_test_1, regressor.predict(X_test_1), color='red')
+plt.title("Fuel Consumption Combined vs CO2 Emission (Training set)")
+plt.xlabel("Fuel Consumption Combined")
+plt.ylabel("CO2 Emission")
+plt.show()
+
+
+
+X_2 = df.iloc[:, 10:11].values
+Y_1 = df['CO2EMISSIONS'].values
+X_train_1, X_test_1, Y_train_1, Y_test_1 = train_test_split(X_2, Y_1, test_size=0.2, random_state=0)
+regressor = LinearRegression()
+regressor.fit(X_train_1, Y_train_1)
+Y_train_pred = regressor.predict(X_train_1)
+plt.scatter(X_train_1, Y_train_1, color='red', label='Actual Data')
+plt.plot(X_train_1, Y_train_pred, color='blue', label='Regression Line')
+plt.title("Fuel Consumption Combined vs CO2 Emission (Training set)")
+plt.xlabel("Fuel Consumption Combined")
+plt.ylabel("CO2 Emission")
+plt.legend()
+plt.show()
+
+
+
+
+X_2 = df.iloc[:, 10:11].values
+Y_1 = df['CO2EMISSIONS'].values
+X_train_1, X_test_1, Y_train_1, Y_test_1 = train_test_split(X_2, Y_1, test_size=0.2, random_state=0)
+regressor = LinearRegression()
+regressor.fit(X_train_1, Y_train_1)
+Y_pred = regressor.predict(X_test_1)
+plt.scatter(X_test_1, Y_test_1, color='red')
+plt.plot(X_test_1, regressor.predict(X_test_1), color='blue')
+plt.title("Fuel Consumption Combined vs CO2 Emission (Test set)")
+plt.xlabel("Fuel Consumption Combined")
+plt.ylabel("CO2 Emission")
+plt.show()
+
 ```
 ### Output:
-![Screenshot 2024-03-08 162816](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/3a0eeebd-c12f-409a-b206-ca48af3c45ea)
+![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/ef876723-4710-4a06-8d3f-4f97f62adc92)
+
+![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/02c3c494-3e0f-4cda-acbc-2c0da5ae7bb9)
+
+![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/dd4da775-36e9-45af-bce7-891a32498dd6)
+
+![image](https://github.com/HEMAKESHG/ML-Assignment-1/assets/144870552/4425135b-f695-4eaf-97ea-5a039e6f9768)
+
 
